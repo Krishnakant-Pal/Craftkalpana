@@ -32,11 +32,11 @@
 				</a>
 			</div> <!-- widget .// -->
 			<div class="widget-header">
-				<a href="#" class="ml-4 icontext">
+				<a href="{% url 'cart' %}" class="ml-4 icontext">
 					<div class="icon"><i class="text-primary fa fa-lg fa-shopping-cart"></i></div>
 					<div class="text">
 						<small class="text-muted">Cart</small> 
-						<div>3 items</div>
+						<div>{{cart_count}} item</div>
 					</div>
 				</a>
 			</div> <!-- widget .// -->

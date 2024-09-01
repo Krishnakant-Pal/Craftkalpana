@@ -31,15 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "category",
-    "accounts",
-    "store",
+    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # custom apps
+    "category",
+    "accounts",
+    "store",
+    "carts",
 ]
 
 MIDDLEWARE = [
@@ -68,6 +71,7 @@ TEMPLATES = [
                 
                 # custom context processors
                 'category.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
