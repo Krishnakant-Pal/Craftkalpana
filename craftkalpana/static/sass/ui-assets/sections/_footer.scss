@@ -1,0 +1,20 @@
+
+/* ================ SECTION-FOOTER ==================  */
+.section-footer{
+	
+		
+	li{ margin-bottom:5px; }
+		
+	p {
+		margin-bottom: 0px;
+		}
+
+	a{ 
+		color:inherit !important; 
+		&:hover{ color:$secondary; }
+		}
+
+	
+	.logo-footer{ height:40px; }
+	.title{font-weight:600; margin-bottom:16px; font-size:18px;}
+}
