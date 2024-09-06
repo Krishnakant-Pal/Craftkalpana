@@ -33,7 +33,8 @@
                                 <div class="aside"><img src="{{ cart_item.product.images.url }}" class="img-sm"></div>
                                 <figcaption class="info">
                                     <a href="{{ cart_item.product.get_url}}" class="title text-dark">{{ cart_item.product.product_name }}</a>
-                                    <p class="text-muted small">Seller: </p>
+                                    <p class="text-muted small">Item type: {{cart_item.product.item_type}} </p>
+                                    <p class="text-muted small">color: {{cart_item.product.color}} </p>
                                 </figcaption>
                             </figure>
                         </td>
@@ -59,7 +60,6 @@
                             </div> <!-- price-wrap .// -->
                         </td>
                         <td class="text-right"> 
-                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
                         <a href="{% url 'remove_cart_item' cart_item.product.id%}" class="btn btn-light"> Remove</a>
                         </td>
                     </tr>
@@ -72,10 +72,6 @@
                     <a href="{% url 'store' %}" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
                     </div>	
                 </div> <!-- card.// -->
-            
-                <div class="alert alert-success mt-3">
-                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
-                </div>
             
             </main> <!-- col.// -->
 

@@ -51,17 +51,17 @@
 <br>
 <dl class="row">
 	
-  <dt class="col-sm-3">Seller</dt>
-  <dd class="col-sm-9"><a href="#">Great textile Ltd.</a></dd>
+  <dt class="col-sm-3">Item type</dt>
+  <dd class="col-sm-9"><a href="#">{{single_product.item_type}}</a></dd>
 
-  <dt class="col-sm-3">Guarantee</dt>
-  <dd class="col-sm-9">2 year</dd>
+  <dt class="col-sm-3">Dimensions</dt>
+  <dd class="col-sm-9">{{single_product.Dimensions}}</dd>
 
-  <dt class="col-sm-3">Delivery time</dt>
-  <dd class="col-sm-9">3-4 days</dd>
+  <dt class="col-sm-3">Color</dt>
+  <dd class="col-sm-9">{{single_product.color}}</dd>
 
-  <dt class="col-sm-3">Availabilty</dt>
-  <dd class="col-sm-9">in Stock</dd>
+  <dt class="col-sm-3">State of Origin</dt>
+  <dd class="col-sm-9">{{single_product.state_of_origin}}</dd>
 </dl> 
 {% if single_product.stock <= 0 %}
             <h5 class="text-danger">Out of stock</h5>

@@ -9,9 +9,9 @@
 	</a> <!-- brand-wrap.// -->
 	</div>
 	<div class="col-lg-4 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
-			<form action="#" class="search-wrap">
+			<form action="{% url 'search' %}" class="search-wrap">
 				<div class="input-group w-100">
-				    <input type="text" class="form-control" style="width:55%;" placeholder="Search">
+				    <input type="text" class="form-control" style="width:55%;" placeholder="Search" name="search_query">
 				    <div class="input-group-append">
 				      <button class="btn btn-primary" type="submit">
 				        <i class="fa fa-search"></i>
@@ -22,15 +22,6 @@
 	</div> <!-- col.// -->
 	<div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
 		<div class="widgets-wrap d-flex justify-content-end">
-			<div class="widget-header">
-				<a href="#" class="ml-4 icontext">
-					<div class="icon"><i class="text-primary fa fa-lg fa-heart"></i></div>
-					<div class="text">
-						<small class="text-muted">Favorites</small> 
-						<div>0 item</div>
-					</div>
-				</a>
-			</div> <!-- widget .// -->
 			<div class="widget-header">
 				<a href="{% url 'cart' %}" class="ml-4 icontext">
 					<div class="icon"><i class="text-primary fa fa-lg fa-shopping-cart"></i></div>
@@ -80,7 +71,7 @@
 		<div class="collapse navbar-collapse" id="dropdown6">
 		      <ul class="navbar-nav mr-auto">
 		        <li class="nav-item dropdown">
-		          <a class="nav-link dropdown-toggle" href="http://example.com" data-bs-toggle="dropdown"> All categories</a>
+		          <a class="nav-link dropdown-toggle" href="" data-bs-toggle="dropdown"> All categories</a>
 		          <div class="dropdown-menu">
 					<a class="dropdown-item" href="{% url 'store' %}">All Products</a>
 					{% for category in categories_links %}
