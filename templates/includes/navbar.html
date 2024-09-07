@@ -25,26 +25,43 @@
 			<div class="widget-header">
 				<a href="{% url 'cart' %}" class="ml-4 icontext">
 					<div class="icon"><i class="text-primary fa fa-lg fa-shopping-cart"></i></div>
-					<div class="text">
-						<small class="text-muted">Cart</small> 
-						<div>{{cart_count}} item</div>
-					</div>
+						<div class="text">
+							<small class="text-muted">Cart</small> 
+							<div>{{cart_count}} item</div>
+						</div>
 				</a>
 			</div> <!-- widget .// -->
-			<div class="widget-header dropdown">
+			{% if user.id %}
+			<div class="widget-header dropdown"> 
 				<a href="#" class="ml-4 icontext" data-bs-toggle="dropdown" data-offset="20,10">
 					<div class="icon"><i class="text-primary fa fa-lg fa-user"></i></div>
 					<div class="text"> 
 						<small class="text-muted">Hello.</small> 
-						<div>Login <i class="fa fa-caret-down"></i></div>
+						<div>{{user.first_name}} <i class="fa fa-caret-down"></i></div>
 					</div>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
-					<a class="dropdown-item" href="#">Profile setting</a>
+					<a class="dropdown-item" href="#">Dashboard</a>
 					<a class="dropdown-item" href="#">My orders</a>
 					<hr class="dropdown-divider">
-					<a class="dropdown-item" href="#">Log out</a>
-				</div> <!--  dropdown-menu .// -->
+					<a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+				</div> <!--  dropdown-menu .// --> 
+				{% else %}
+				<div class="widget-header dropdown"></div>
+					<a href="#" class="ml-4 icontext" data-bs-toggle="dropdown" data-offset="20,10">
+						<div class="icon"><i class="text-primary fa fa-lg fa-user"></i></div>
+						<div class="text"> 
+							<small class="text-muted">Hello.</small> 
+							<div>Login/Register <i class="fa fa-caret-down"></i></div>
+						</div>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="{% url 'login' %}">Login</a>
+						<a class="dropdown-item" href="{% url 'register' %}">Register</a>
+					</div> <!-- dropdown-menu .// -->
+				
+				{% endif %}
+				</div> <!-- widget-header dropdown.// -->
 			</div> <!-- widget  dropdown.// -->
 		</div>	<!-- widgets-wrap.// -->
 	</div> <!-- col.// -->
