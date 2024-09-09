@@ -13,6 +13,10 @@ from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 
+from carts.views import _cart_id
+from carts.models import Cart, CartItem
+import requests
+
 def register(request):
     ''' Lets user register a new account'''
     if request.method == 'POST':
@@ -61,12 +65,34 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-    
+
         user = auth.authenticate(email=email, password=password)
 
-        if user is not None:
+        if user :
+            try:
+                cart = Cart.objects.get(cart_id=_cart_id(request))
+                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
+                if is_cart_item_exists:
+                    cart_item = CartItem.objects.filter(cart=cart)
+                for item in cart_item:
+                    item.user = user
+                    item.save()   
+                
+            except:
+                pass
+
             auth.login(request,user)
-            return redirect('home')
+            # if next page is requested then redirect to next page
+            url = request.META.get('HTTP_REFERER') 
+            try: 
+                query = requests.utils.urlparse(url).query
+                params = dict(x.split('=') for x in query.split('&'))
+                print(params)
+                if 'next' in params:
+                    next_page = params['next']
+                    return redirect(next_page)
+            except:
+                return redirect('home')
         else:
             messages.error(request, 'Invalid login credentials')
             return redirect('login')

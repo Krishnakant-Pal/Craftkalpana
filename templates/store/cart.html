@@ -42,7 +42,7 @@
                             <div class="form-group col-md flex-grow-0">
                                 <div class="input-group mb-3 input-spinner">
                                   <div class="input-group-append">
-                                    <a href="{% url 'remove_cart' cart_item.product.id%}" class="btn btn-light" type="button" id="button-minus"> &minus; </a>
+                                    <a href="{% url 'remove_cart' cart_item.product.id cart_item.id%}" class="btn btn-light" type="button" id="button-minus"> &minus; </a>
                                   </div>
                                   <input type="text" class="form-control" value="{{cart_item.quantity}}">
                                   <div class="input-group-prepend">
@@ -60,7 +60,7 @@
                             </div> <!-- price-wrap .// -->
                         </td>
                         <td class="text-right"> 
-                        <a href="{% url 'remove_cart_item' cart_item.product.id%}" class="btn btn-light"> Remove</a>
+                        <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}" class="btn btn-light"> Remove</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -68,7 +68,8 @@
                     </tbody>
                     </table>
                     <div class="card-body border-top">
-                    <a href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
+                    <a href="{% url 'checkout' %}" class="btn btn-primary float-md-right"> Proceed to checkout <i
+                            class="fa fa-chevron-right"></i> </a>
                     <a href="{% url 'store' %}" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
                     </div>	
                 </div> <!-- card.// -->
