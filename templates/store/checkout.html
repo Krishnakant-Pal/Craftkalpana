@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <aside class="col-md-6">
-                <form action="" method="POST">
+                <form action="{% url 'order_placed' %}" method="POST">
                     {% csrf_token %}
                 <div class="container" style="max-width: 720px;">
                     <div class="card mb-4">
@@ -17,38 +17,38 @@
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" placeholder="" required>
+                                        <input type="text" class="form-control" name="first_name" placeholder="" required>
                                     </div> <!-- form-group end.// -->
                                     <div class="col form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" placeholder="" required>
+                                        <input type="text" class="form-control"  name="last_name" placeholder="" required>
                                     </div> <!-- form-group end.// -->
                                 </div> <!-- form-row end.// -->
 
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>Phone Number</label>
-                                        <input type="number" class="form-control" placeholder="" required>
+                                        <input type="number" class="form-control" name="phone" placeholder="" required>
                                     </div> <!-- form-group end.// -->
                                     <div class="col form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" placeholder="" required>
+                                        <input type="text" class="form-control" name="pincode" placeholder="" required>
                                     </div> <!-- form-group end.// -->
                                 </div> <!-- form-row end.// -->
 
                                 <div class="form-group">
                                     <label>Address (Area and Street)</label>
-                                    <textarea class="form-control" rows="2"></textarea>
+                                    <textarea class="form-control" name="address" rows="2"></textarea>
                                 </div> <!-- form-group// -->
 
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>City</label>
-                                        <input type="email" class="form-control" placeholder="">
+                                        <input type="text" class="form-control" name="city" placeholder="">
                                     </div> <!-- form-group end.// -->
                                     <div class="col form-group">
                                         <label>State</label>
-                                        <input type="text" class="form-control" placeholder="">
+                                        <input type="text" class="form-control"name="state"  placeholder="">
                                     </div> <!-- form-group end.// -->
                                 </div> <!-- form-row end.// -->
                            
@@ -121,8 +121,6 @@
                                 <img src="{% static 'images/misc/payments.png' %}" height="26">
                             </p>
                             <div class="card-body border-top">
-                                <!-- <button type="submit" name="submit" class="btn btn-primary float-md-right"> Proceed to payment <i
-                                        class="fa fa-chevron-right"></i> </button> -->
                                 <button type="submit" name="submit" class="btn btn-primary float-md-right"> Proceed to payment</button>
                                 <a href="{% url 'cart' %}" class="btn btn-light float-md-left">
                                     <i class="fa fa-chevron-left"></i> Back to cart </a>

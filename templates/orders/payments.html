@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <div class="card">
+                    <h5 class="card-header">Billing Address</h5>
+                    <div class="card-body">
+                        <p class="card-text mb-0 font-weight-bold">{{order.full_name}}</p>
+                        <p class="card-text mb-0">Address: {{order.address}}</p>
+                        <p class="card-text mb-0">{{order.city}}, {{order.state}} - {{order.pincode}}</p>
+                        <p class="card-text mb-0">India</p>
+                        <p class="card-text mb-0">Email: <a href="mailto:{{order.email}}"
+                                class="font-weight-bold">{{order.email}}</a></p>
+                        <p class="card-text mb-0">Phone number: <a href="tel:{{order.phone}}"
+                                class="font-weight-bold">{{order.phone|default:"No Phone Provided"}}</a></p>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header">Payment Method</h5>
+                        <div class="card-body">
+                            <p class="card-text">PayPal</p>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header">Review Products</h5>
+                        <div class="card-body">
+                            <table class="table table-borderless table-shopping-cart">
+                                <thead class="text-muted">
+                                    <tr class="small text-uppercase">
+                                        <th scope="col">Product</th>
+                                        <th scope="col" width="120">Quantity</th>
+                                        <th scope="col" width="120">Price</th>
+                                        <th scope="col" class="text-right" width="200"> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for cart_item in cart_items %}
+                                    <tr>
+                                        <td>
+                                            <figure class="itemside">
+                                                <div class="aside"><img src="{{ cart_item.product.images.url }}"
+                                                        class="img-sm">
+                                                </div>
+                                                <figcaption class="info">
+                                                    <a href="{{ cart_item.product.get_url}}"
+                                                        class="title text-dark">{{cart_item.product.product_name  }}</a>
+                                                    <p class="text-muted small">Item type:
+                                                        {{cart_item.product.item_type}}
+                                                    </p>
+                                                    <p class="text-muted small">color: {{cart_item.product.color}} </p>
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td>
+                                            <var class="price">{{cart_item.quantity}}</var>
+                                        </td>
+                                        <td>
+                                            <div class="price-wrap">
+                                                <var class="price">₹{{cart_item.sub_total }}</var>
+                                                <small class="text-muted">₹{{cart_item.product.price}} per item </small>
+                                            </div> <!-- price-wrap .// -->
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div> <!-- card.// -->
+
+            </main> <!-- col.// -->
+            <aside class="col-md-4">
+
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Total price:</dt>
+                            <dd class="text-right">₹ {{total}} </dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>GST:</dt>
+                            <dd class="text-right">₹ {{gst}} </dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Grand total :</dt>
+                            <dd class="text-right  h5"><strong>₹ {{grand_total}}</strong></dd>
+                        </dl>
+                        <hr>
+                        <p class="text-center mb-3">
+                            <img src="{% static 'images/misc/payments.png' %}" height="26">
+                        </p>
+                        <a href="{% url 'payments' %}"type="submit" name="submit" class="btn btn-primary float-md-right"> Proceed to
+                            payment</button>
+                        <a href="{% url 'checkout' %}" class="btn btn-light float-md-left">
+                            <i class="fa fa-chevron-left"></i> Back to cart </a>
+                        </form>
+                    </div> <!-- card-body.// -->
+                </div> <!-- card .// -->
+            </aside> <!-- col.// -->
+        </div>
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock %}
