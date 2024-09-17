@@ -4,6 +4,7 @@ from .forms import OrderForm
 from .models import Order
 from carts.views import _calculate_cart_totals
 import datetime
+from django.http import HttpResponse,HttpResponseRedirect
 
 def payments(request):
     total, quantity, cart_items, gst, grand_total = _calculate_cart_totals(request)
@@ -14,7 +15,8 @@ def payments(request):
         'grand_total':grand_total,
         'gst': gst,
     }
-    return render(request,'orders/payments.html',context)
+    # return render(request,'orders/payments.html',context)
+    return HttpResponse("Payments Comming Soon")
 
 def order_place(request):
     current_user = request.user

@@ -68,8 +68,23 @@
                                 <a href="{{ product.get_url}}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
                                 <figcaption class="info-wrap">
                                     <div>
+                                        <div class="rating-wrap my-3">
+                                            <ul class="rating-stars">
+                                                <li style="width:{{product.review_average_percent| default:0 }}%;" class="stars-active">
+                                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </li>
+                                            </ul>
+                                            <small class="label-rating text-muted">{{product.review_count}} reviews</small>
+                                        </div>
                                         <a href="{{product.category.get_url}}" class="text-muted">{{product.category}}</a>
-                                        <a href="{{ product.get_url}}" class="title">{{product.product_name}}</a>
+                                        <a href="{{ product.get_url}}" class="title">{{product.product_name | title}}</a>
                                     </div>
                                     <div class="price h5 mt-2">₹{{product.price}}
                                         {% if product.stock <= 0 %}
